@@ -1,0 +1,56 @@
+{
+  "name": "qa-frontend-testcafe",
+  "version": "1.0.0",
+  "description": "Frontend testing using TestCafe",
+  "scripts": {
+    "test:chrome": "node scripts/beautify.js && ./node_modules/testcafe/bin/testcafe.js chrome",
+    "test:firefox": "node scripts/beautify.js && ./node_modules/testcafe/bin/testcafe.js firefox",
+    "test:chrome:headless": "node_modules/testcafe/bin/testcafe.js chrome:headless",
+    "test:firefox:headless": "./node_modules/testcafe/bin/testcafe.js firefox:headless",
+    "allure:gen": "allure generate allure/allure-results --clean -o allure/allure-report",
+    "allure:open": "allure open allure/allure-report -p 8080",
+    "test:docker": "docker run -u root -v ${pwd}:/app/tests -it testcafe-app firefox tests/integration/*.js",
+    "test": "testcafe chrome:headless integration/Prenagen/login.js --reporter allure",
+    "test:dev": "testcafe chrome integration/Prenagen/login.js",
+    "beautify": "node scripts/beautify.js",
+    "titipan": "env=stg npm run test -- integration/frontoffice/chakracare-registration.js -L --fgrep=TC-140",
+    "test:stg-register": "env=stg testcafe chrome integration/frontoffice/chakracare-registration.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://source.cloud.google.com/crm-001-cicd/Chakra-Testcafe.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://code.chakra.uno/dezuli/chakra-testcafe/issues"
+  },
+  "homepage": "https://code.chakra.uno/dezuli/chakra-testcafe#readme",
+  "dependencies": {
+    "allure": "^0.0.0",
+    "app-root-path": "^3.0.0",
+    "chromedriver": "^97.0.0",
+    "faker": "^4.1.0",
+    "jetty": "^0.2.1",
+    "knex": "^0.20.3",
+    "module-alias": "^2.2.2",
+    "mysql": "^2.17.1",
+    "node": "^17.4.0",
+    "random-js": "^2.1.0",
+    "testcafe": "^1.17.2-rc.3",
+    "testcafe-reporter-allure": "^1.0.5",
+    "testcafe-reporter-html": "^1.4.6",
+    "testcafe-reporter-spec": "^2.1.1",
+    "yaml": "^1.10.2"
+  },
+  "devDependencies": {
+    "@wdio/allure-reporter": "^5.22.4",
+    "js-beautify": "^1.10.2",
+    "testcafe": "*"
+  },
+  "_moduleAliases": {
+    "lib": "lib",
+    "model": "model",
+    "resources": "resources"
+  }
+}

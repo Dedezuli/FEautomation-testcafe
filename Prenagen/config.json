@@ -1,0 +1,34 @@
+{
+  "env": "dev",
+  "url": {
+    "dev": {
+      "prenagen": "https://lp-teman-prenagen-testing-d33dgvhu5a-as.a.run.app"
+    },
+    "staging": {
+      "frontoffice": "https://lp-teman-prenagen-testing-d33dgvhu5a-as.a.run.app",
+      "backoffice": ""
+    },
+    "compilerOptions": {
+      "target": "es6",
+      "baseUrl": "./",
+      "paths": {
+        "lib/*": [
+          "./lib/*"
+        ],
+        "model/*": [
+          "./model/*"
+        ],
+        "resources/*": [
+          "./resources/*"
+        ]
+      }
+    },
+    "exclude": [
+      "*/node_modules/**/*"
+    ]
+  },
+  "default": {
+    "password": "111111"
+  },
+    "skipJsErrors": "true"
+}

@@ -1,0 +1,21 @@
+{
+    "compilerOptions": {
+        "baseUrl": ".",
+        "paths": {
+            "lib/*": [
+                "./lib/*"
+            ],
+            "model/*": [
+                "./model/*"
+            ],
+            "resources/*": [
+                "./resources/*"
+            ]
+        },
+        "module": "commonjs",
+        "target": "es6"
+    },
+    "exclude": [
+        "./node_modules/*"
+    ]
+}

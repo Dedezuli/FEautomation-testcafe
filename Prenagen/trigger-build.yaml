@@ -1,0 +1,14 @@
+steps:
+# Build the container image
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['build', '-t', 'gcr.io/crm-001-cicd/chakra-testcafe', '.']
+# Push the container image to Container Registry
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['push', 'gcr.io/crm-001-cicd/chakra-testcafe']
+# Deploy container image to Cloud Run
+- name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+  entrypoint: gcloud
+  args: ['run', 'deploy', '${pwd}:/app/tests -it testcafe-app firefox tests/integration/*.js','--region','asia-southeast1','--allow-unauthenticated']
+images:
+- gcr.io/crm-001-cicd/chakra-testcafe
+  
